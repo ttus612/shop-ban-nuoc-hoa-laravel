@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\Users\LoginController;
 use \App\Http\Controllers\Admin\MainController;
+use \App\Http\Controllers\Admin\MenuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,22 @@ use \App\Http\Controllers\Admin\MainController;
 |
 */
 
-Route::get('admin/users/login', [LoginController::class,  'index']);
+Route::get('admin/users/login', [LoginController::class,  'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class,  'store']);
 
-Route::get('admin/main', [MainController::class, 'index'])->name('admin');
+Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('admin')->group(function (){
+        #Main: admin/...
+        Route::get('/', [MainController::class, 'index'])->name('admin');
+        Route::get('main', [MainController::class, 'index']);
+
+        #Menus: admin/menus/...
+        Route::prefix('menus')->group(function () {
+            Route::get('add', [MenuController::class, 'create']);
+        });
+    });
+});
+
+
+
