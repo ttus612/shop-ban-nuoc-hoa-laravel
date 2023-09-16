@@ -19,18 +19,21 @@
 @endsection
 @section('content')
     <form action="" method="POST">
-
+        @csrf
         <div class="card-body">
 
             <div class="form-group">
                 <label for="menu">Tên danh mục</label>
-                <input type="text" name="menu" class="form-control" id="menu" placeholder="Enter name">
+                <input type="text" name="name" class="form-control" placeholder="Nhập tên danh mục">
             </div>
 
             <div class="form-group">
                 <label>Danh mục </label>
                 <select class="form-control" name="parent_id">
-                    <option value="0">Danh mục cha</option>
+                    @foreach($menus as $menus)
+                        <option value="{{$menus->id}}">{{$menus->name}}</option>
+                    @endforeach
+
                 </select>
             </div>
 
