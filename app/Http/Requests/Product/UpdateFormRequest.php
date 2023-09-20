@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests\Menu;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateFormRequest extends FormRequest
+class UpdateFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,15 +22,16 @@ class CreateFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=> 'required|unique:menus'
+            'name' =>'required',
+            'thumb' =>'required'
         ];
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
-            'name.required' => 'Vui lòng nhập tên danh mục',
-            'name.unique' => 'Tên danh mục này đã tồn tại vui lòng nhập tên danh mục khác ?',
+            'name.required' => 'Vui lòng nhập tên sản phẩm',
+            'thumb.required' => 'Ảnh đại diện này không được trống'
         ];
     }
 }
