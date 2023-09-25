@@ -22,7 +22,7 @@
                     <th>{{$product->menu->name}}</th>
                     <th>{{$product->price}}</th>
                     <th>{{$product->price_sale}}</th>
-                    <th><a href="{{$product->thumb}}"><img src="{{$product->thumb}}" width="70px"></a> </th>
+                    <th><a href="{{$product->thumb}}"><img src="{{$product->thumb}}" height="40px"></a> </th>
                     <th>{!! \App\Helpers\Helper::active($product->active) !!}</th>
                     <th>{{$product->updated_at}}</th>
                     <th>
