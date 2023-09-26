@@ -7,6 +7,7 @@ use \App\Http\Controllers\Admin\MenuController;
 use \App\Http\Controllers\Admin\ProductController;
 use \App\Http\Controllers\Admin\UploadController;
 use \App\Http\Controllers\Admin\SliderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,6 +63,8 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 });
+
+Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
 
 
 
